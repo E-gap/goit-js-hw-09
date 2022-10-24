@@ -9,10 +9,10 @@ function getRandomHexColor() {
 }
 
 let intervalId = 0;
-let intervalIsActive = false;
+
 
 start.addEventListener('click', () => {
-    intervalIsActive = true;
+    
     intervalId = setInterval(() => {    
     body.style.backgroundColor = getRandomHexColor();           
     start.setAttribute("disabled", true);
@@ -22,7 +22,7 @@ start.addEventListener('click', () => {
 });
 
 stop.addEventListener('click', () => {
-    intervalIsActive = false;
+    
     clearInterval(intervalId);    
     start.removeAttribute("disabled");
     
