@@ -14,33 +14,31 @@ function createPromise(position, delay) {
 
     setTimeout(() => {
       if (shouldResolve) {
-        resolve({position, delay})
+        resolve({ position, delay })
       } else {
-        reject({position, delay})
+        reject({ position, delay })
       }
-    }, delay);    
-    
-  
-  })  
+    }, delay);
+
+
+  })
 }
 
 
 const handler = (event) => {
   event.preventDefault();
-  const amount = Number(amount1.value);  
-  let delay = Number(delay1.value);  
-  const step = Number(step1.value);  
+  const amount = Number(amount1.value);
+  let delay = Number(delay1.value);
+  const step = Number(step1.value);
   for (let i = 1; i <= amount; i += 1) {
     createPromise(i, delay)
       .then(({ position, delay }) => Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`))
-      .catch(({ position, delay }) => Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`));  
+      .catch(({ position, delay }) => Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`));
     delay += step;
-  }  
-  
+  }
+
 }
 
 form.addEventListener('submit', handler);
-
-
 
 
